@@ -1,0 +1,67 @@
+#每个人的平均分，并且平均分大于等于90， 分组后的条件需要having 不是where
+select name as 名字，avg(mark) as 平均分 from table group by name having 平均分>=90;
+# <> 这个是不等号     判断空值
+select a from b where c is null     /   is not null;
+#去重
+select distinct a from b;
+#排序
+select a from b  order by   /  + desc;
+#注释  comment
+create table a (xishi int not null comment '姓名', );
+#a存在就删除
+drop table if exits a;
+#修改表
+alter table a add column name varchar(20) after age;
+alter table a change column name name1 varchar(20);
+alter table a drop column name;
+#插入数据
+insert into a (name, age) values ('xishi', 23),(),();
+#更新操作
+update a set name='xishi' where;    #所有人名字都改了
+#外键约束  绑定了table_stud的name的主键作为自己的外键     外键可以约束为uniq和参照关联                                        不让删除不让更新
+alter table a add constraint foreginkey foreign key (name) references table_stud(name) on delete restrict on update restrict;
+#笛卡尔积   加条件得出想要得结果
+select name, age, height from table1 f1, table2 f2, table3 f3 where f1.name=f3.name and f1.age=f2.age;
+select name, avgmark from table1 t1, (select id, avg(mark) as avgmark from table2 group by id) t2 where t1.id=t2.id;
+#内连接  实现和上面的语句一个效果
+select name, age, height from table1 f1 inner join table3 f3 on f1.name-f3.namef2 inner join table2 f2 on f1.age=f2.age;
+select name, avgmark from table1 t1 inner join (select id, avg(mark) as avgmark from table2 group by id) t2 on t1.id=t2.id;
+#内连接是会有条件的筛选， 想要全部的数据可以将 inner join 换成 left outer join
+#mysql 单表支持65535TB的数据   单列4G    翻页看数据
+limit 5 offset 10;    #跳过10条看5条     limit 10, 5;
+###注意事项
+给数据库表命名的时候尽量是小写
+作为筛选条件的字符串是否区分大小写看设置的校对规则   collate
+crete database a default charset utf8 collate utf8_bin_ci(这个就不区分， utf_bin  区分);
+数据库中的对象会加前缀区分：  tb_   db_
+不推荐使用in  not in   distinct   考虑使用exists  not exists 代替
+select a,d from table1 t1 where exists (select 'x' from table2 t2 where t1.b=t2.c);     #x 存在就查，不存在就不查
+#判读sql语句执行的快慢
+explain select * from t1;
+#给数据加目录  就是索引，加快查询 但是会把增删改变慢 index
+create index index_name on table (name);    #给name建立索引，会浪费空间但是增快查询的时间
+#视图（简化查询操作、限制权限）:查询的快照
+create view vw_name as select a,d from table1 t1 where exists (select 'x' from table2 t2 where t1.b=t2.c);
+以后还想查看上面的结果只需要：select * from vw_name;              删除：drop view view_name
+#创建存储过程
+delimiter $$
+create procedure proc_name(canshu1 int, out shuchu float) begin select avg(mark) into shuchu from table1; end$$
+delimiter ;
+call proc_name(20, @a);
+select @a;
+两个delimiter后面$$是定界符（结束符），需要还原 delimiter;
+
+#召回权限
+revoke insert, delete on databse1.table1 from 'xishi'@'%';
+#事务，就是将多个任务绑定成一个整体，要么不做要么全做
+begin;
+delete ;
+select ;
+coommit;   //  rollback;
+
+
+
+
+
+
+

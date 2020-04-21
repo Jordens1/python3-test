@@ -1,0 +1,64 @@
+﻿MVC:是一种软件设计典范
+MTV:基本和上面的对应
+
+官方地址：https://docs.djangoproject.com/en/3.0/intro/tutorial01/
+
+#安装虚拟环境
+https://www.cnblogs.com/technologylife/p/6635631.html
+
+pip install virtualenvwrapper
+创建虚拟环境：mkvirtualenv GP1 -p /usr/bin/python3
+    deactive              workon GP1   cd GP1
+    pip3 freeze  pip3 install django==2.2    pip3 list
+    # import django  django.get_version()   
+    django-admin startproject xishi    cd xishi
+
+#升级sqlite
+https://blog.csdn.net/qq_39969226/article/details/92218635
+
+    python start manage.py startapp APP
+    python manager.py runserver
+
+
+SQLite:非常小的数据库，手机上用，和mysql相似度很高
+
+
+#在pycharm上使用远程Django
+https://blog.csdn.net/ouyangzhenxin/article/details/81125000
+
+
+文档的对应：
+polls--->APP   应用程序
+myvote--->myvote   项目
+
+
+modles是使用了ORM（对象关系映射）
+
+
+python连接mysql驱动：mysqlcilent（对my.conf等文件有要求） mysql-python（支持2） pymysql（2、3都支持）
+
+
+数据库迁移：pip3 install pymysql 修改__init__.py  pymysql.install_as_MySQLdb() 
+迁移数据库到mysql出现版本问题：https://www.jianshu.com/p/c44b0c88fafe      (虚拟环境)  vim /opt/Envs/GP1/lib/python3.7/site-packages/django/db/backends/mysql/operations.py
+之后不需要再做sql语句的改动
+
+
+shift + F6 重命名、重构
+
+聚合函数：aggregate（）用于操作列的，比如列的平均值aggregate(AVG('age'))
+
+F对象：可以快速的获取一个模型的不同对象，以及允许算数运算
+Q对象：对条件进行封装，之后支持逻辑运算： & | ~ 
+
+模型成员：
+	显性属性 ：开发者自己定义的
+	隐形属性 ：ORM自动生成的，如果手动声明（a = models.Manager()），就不会自动产生隐形属性(object),变成了a
+
+
+
+迁移失败回滚：删除迁移生成的文件、表、数据库记录
+
+
+
+1262386309
+337rmu

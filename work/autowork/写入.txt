@@ -1,0 +1,46 @@
+重要概念：
+Application:WORD应用程序
+Document: 一个打开的文档对象
+Paragraph: 段落
+ParagraphFormat: 段落格式
+Section ：代表指定文档、区域或所选文档中的节
+
+w = win32com.client.Dispatch('Word.Application')
+# 或者使用下面的方法，使用启动独立的进程：
+# w = win32com.client.DispatchEx('Word.Application')
+
+# 后台运行
+w.Visible = 0       # 不显示
+w.DisplayAlerts = 0 # 不警告
+
+# 打开文件
+doc = w.Documents.Open( FileName = filenamein ) # 打开已有文件
+# doc = w.Documents.Add() # 创建新的文档
+
+# 插入文字
+myRange = doc.Range(0,0)    # 两个参数分别代表起始点,结束点
+myRange.InsertBefore('Hello from Python!')
+
+# 使用样式
+wordSel = myRange.Select()
+wordSel.Style = constants.wdStyleHeading1
+
+# 正文文字替换
+w.Selection.Find.ClearFormatting()
+w.Selection.Find.Replacement.ClearFormatting()
+w.Selection.Find.Execute(OldStr, False, False, False, False, False, True, 1, True, NewStr, 2)
+
+# 页眉文字替换
+----------------
+版权声明：本文为CSDN博主「热心市民小磊」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/u013289615/article/details/89303741
+Installing via PIP
+Note that PIP support is experimental.
+You can install pywin32 via pip:
+pip install pywin32
+Note that if you want to use pywin32 for "system wide" features, such as registering COM objects or implementing Windows Services, then you must run the following command from an elevated command prompt:
+python Scripts/pywin32_postinstall.py -install
+Building from source
+Building from source is extremely complicated due to the fact we support building old versions of Python using old versions of Windows SDKs. If you just want to build the most recent version, you can probably get away with installing th same MSVC version used to build that version of Python, grabbing a recent Windows SDK and running setup.py
+setup.py is a standard distutils build script. You probably want:
+

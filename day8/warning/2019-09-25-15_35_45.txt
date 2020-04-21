@@ -1,0 +1,28 @@
+now_mtime
+1569396945.0223613
+now_gtime
+time.struct_time(tm_year=2019, tm_mon=9, tm_mday=25, tm_hour=15, tm_min=35, tm_sec=45, tm_wday=2, tm_yday=268, tm_isdst=0)
+now_stime
+2019-09-25 15:35:45
+swap_total
+2147479552
+swap_free
+2147479552
+swap_used
+0
+mem_total
+7276212224
+mem_free
+2698465280
+mem_buffers
+16384
+cpu_idle
+207813.74
+cpu_count
+4
+login_user
+[suser(name='root', terminal=':0', host='localhost', started=1569369984.0, pid=6053), suser(name='root', terminal='pts/0', host='localhost', started=1569376128.0, pid=10040)]
+disk_info
+{'sda': sdiskio(read_count=87473, write_count=45982, read_bytes=3226658816, write_bytes=1558502912, read_time=53637, write_time=179616, read_merged_count=422, write_merged_count=4576, busy_time=48648), 'sda1': sdiskio(read_count=206, write_count=0, read_bytes=2588672, write_bytes=0, read_time=170, write_time=0, read_merged_count=232, write_merged_count=0, busy_time=53), 'sda2': sdiskio(read_count=87120, write_count=45950, read_bytes=3219052544, write_bytes=1558502912, read_time=53374, write_time=179613, read_merged_count=190, write_merged_count=4576, busy_time=48610), 'sda3': sdiskio(read_count=75, write_count=0, read_bytes=3047424, write_bytes=0, read_time=72, write_time=0, read_merged_count=0, write_merged_count=0, busy_time=50), 'loop0': sdiskio(read_count=0, write_count=0, read_bytes=0, write_bytes=0, read_time=0, write_time=0, read_merged_count=0, write_merged_count=0, busy_time=0)}
+disk_parition
+[sdiskpart(device='/dev/sda2', mountpoint='/', fstype='xfs', opts='rw,relatime,attr2,inode64,noquota'), sdiskpart(device='/dev/sda1', mountpoint='/boot/efi', fstype='vfat', opts='rw,relatime,fmask=0077,dmask=0077,codepage=437,iocharset=ascii,shortname=winnt,errors=remount-ro')]

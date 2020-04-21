@@ -1,0 +1,66 @@
+模型关系：
+	1对1：用于复杂表的拆分、增加新功能
+		  OneToOneField
+		  使用外键实现的，对外键添加了唯一约束
+		  数据删除：
+		  	主表：主表删除，从表就删掉了
+		  	从表：从表删除，主表不受影响
+		  	谁申明关系，谁就是从表（c_card = models.）.OneToOneField(Person),现在Card就是从表
+		  	id_person = models.OneToOneField(Person, null=True, blank=True, on_delete=models.PROTECT)，默认是CASECARD，现在是PROTECT（防止误操作，只能先删除级联数据再删除主表）
+		  SET:
+			set_null:允许为null
+			set_default:存在默认值
+			set（）：指定值
+		  级联数据获取：
+		  	243：4分05
+		  	主获取从：隐形属性，默认就是级联模型的名字   p = Person.objects.last() p.idcard.id_num
+		  	从获取主：显性属性，就是属性的名字，正常的
+	1对多：
+		ForgenKey
+		主从获取：同上
+
+	多对多：
+		最为复杂
+		开发中很少直接使用多对多属性，而是自己维护多对多关系
+		产生表的时候会产生单独的关系表
+			关系表中存储关联表的主键，通过多个外键实现
+			多个外键值不能同时相等
+		级联数据获取：
+			主获取从：隐形属性，操作同下
+			从获取主：使用属性，属性是一个Manager子类
+		级联数据：
+			add remove clear set  
+		MangerRelatedManager:
+			函数中定义的类	并且父类是参数	动态创建
+
+模型继承：
+	Django中模型支持继承
+	默认继承是将通用字段放到父表中，特定字段放在自己的表中，中间使用外键链接
+		关系型数据库关系越复杂，效率低
+		父类中存储数据过多
+	使用元信息来解决这个问题
+		使模型抽象化，就不会产生映射
+		子模型映射出来的表直接包含父模型的字段
+
+逆向使用数据库的表生成模型：
+	python manager inspectdb >APP/models.py 
+	元信息中包含一个属性：manager= False   #不归属系统管理，自己管理
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

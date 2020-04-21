@@ -1,0 +1,45 @@
+一：更改配置之后，runserver无法运行，重启可解决
+
+(GP1) [root@django xishi]# python3 manage.py runserver 0:8000
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+April 05, 2020 - 15:16:31
+Django version 2.2, using settings 'xishi.settings'
+Starting development server at http://0:8000/
+Quit the server with CONTROL-C.
+/opt/Envs/GP1/xishi/Two/urls.py changed, reloading.
+Watching for file changes with StatReloader
+Performing system checks...
+
+二：
+在views.py中：
+c1= Person.objects.filter(p_age__in=[4, 8]).order_by('-p_age').first()
+first() last()  可能会出现相同的返回结果，可以提前order_by()
+
+三：
+在Django查询中会出现时间问题，它有自己的时区表
+	关闭自定义的时区   USE_TZ = False
+	在数据库中创建自己的时区表
+
+三：
+pychamr激活码
+https://www.cnblogs.com/xj-excellent/p/12461239.html
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

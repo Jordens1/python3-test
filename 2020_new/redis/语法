@@ -1,0 +1,17 @@
+#使用redis—cli时，验证身份      auth + 密码
+#增加有效期    set a 100 ex 30     ttl a   查看a的存活时间
+#基本测试  测试性能   redis-benchmark
+单线程+异步I/O（多步IO复用（协程））的工作方式
+#save   bgsave   保存一下数据   #type a 看a的数据类型   #select 1  选择数据库一
+# 哈希值  hset
+#地理信息计算
+#查看主从复制的身份  info replication
+
+
+#rdb文件，保存了信息的，如果文件损坏了，启动不了，redis-check-rdb + dump.rdb  检查修复
+appendonly.aof  是命令文件   redis-check-rdb --fix + appendonly.aof
+
+
+
+
+
